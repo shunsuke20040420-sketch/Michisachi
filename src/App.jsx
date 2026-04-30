@@ -1,5 +1,7 @@
 import { ArrowRight, Clock3, LampDesk, Map, Sparkles, Target } from 'lucide-react';
 import { useEffect, useLayoutEffect, useState } from 'react';
+import ProDetailPage from './components/ProDetailPage.jsx';
+import './styles/pro-detail.css';
 
 const navItems = [
   { key: 'top', label: 'トップ' },
@@ -67,7 +69,7 @@ const sections = [
     image: '/mockups/mockup-02-pro-analysis.png',
     alt: 'Proセクション',
     hotspots: [
-      { label: '料金へ移動', href: '#pricing', x: 5.5, y: 43.3, width: 20.0, height: 6.1 },
+      { label: 'Proの内容を見る', href: '/pro', x: 5.5, y: 43.3, width: 20.0, height: 6.1 },
     ],
   },
   {
@@ -351,6 +353,7 @@ function CreateTownPage() {
 export { sections };
 
 export default function App() {
+  const currentPath = typeof window === 'undefined' ? '/' : window.location.pathname;
   const [activeSection, setActiveSection] = useState('top');
 
   useLayoutEffect(() => {
@@ -414,6 +417,10 @@ export default function App() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  if (currentPath === '/pro') {
+    return <ProDetailPage />;
+  }
 
   return (
     <div className="lp-scroll-shell">
