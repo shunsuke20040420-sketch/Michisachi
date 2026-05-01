@@ -72,10 +72,14 @@ const sections = [
   {
     key: 'pro',
     title: 'みちまち | Pro',
-    image: '/mockups/mockup-02-pro-analysis.png',
-    alt: 'Proセクション',
+    image: '/mockups/mockup-02-pro-lp-destination.png',
+    imageWidth: 1536,
+    imageHeight: 1024,
+    fullImage: true,
+    alt: 'Proは街を育て直すための次の6週間',
     hotspots: [
-      { label: 'Proの内容を見る', href: '/pro', x: 5.5, y: 43.3, width: 20.0, height: 6.1 },
+      { label: '先行登録する', href: '#pricing', x: 5.0, y: 38.5, width: 13.7, height: 5.4 },
+      { label: '無料版との違いを見る', href: '/pro', x: 20.2, y: 38.9, width: 12.5, height: 4.8 },
     ],
   },
   {
