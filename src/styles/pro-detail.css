@@ -1794,3 +1794,247 @@
     transform: none;
   }
 }
+
+/* LP continuity pass: keep the same content, but make /pro feel like the LP world. */
+.pro-detail-page {
+  background:
+    radial-gradient(circle at 72% 6%, rgba(237, 161, 26, 0.16), transparent 30rem),
+    radial-gradient(circle at 15% 36%, rgba(95, 143, 84, 0.09), transparent 24rem),
+    linear-gradient(180deg, #fffaf0 0%, #fff6e8 52%, #fffaf2 100%);
+}
+
+.pro-header {
+  min-height: 78px;
+  border-bottom-color: rgba(214, 196, 169, 0.78);
+  background: rgba(255, 250, 240, 0.92);
+}
+
+.pro-header__brand-mark {
+  border-radius: 8px;
+  background: linear-gradient(180deg, #f8fbef, #e7f0dc);
+}
+
+.pro-header__login {
+  border-color: rgba(207, 127, 8, 0.24);
+  background: linear-gradient(180deg, #f8ad24 0%, var(--pro-amber) 100%);
+  color: #fffdf8;
+  box-shadow: var(--shadow-amber, 0 14px 30px rgba(237, 161, 26, 0.24));
+}
+
+.pro-hero {
+  width: 100%;
+  min-height: min(720px, calc(100svh - var(--pro-header)));
+  grid-template-columns: minmax(360px, 0.72fr) minmax(560px, 1.28fr);
+  gap: clamp(26px, 4vw, 58px);
+  padding: clamp(54px, 6vw, 88px) max(var(--pro-gutter), calc((100vw - var(--pro-max)) / 2)) clamp(36px, 4vw, 54px);
+  overflow: hidden;
+}
+
+.pro-hero::before {
+  display: block;
+  right: max(-70px, calc((100vw - var(--pro-max)) / -2));
+  bottom: 22px;
+  left: auto;
+  width: min(820px, 58vw);
+  height: min(500px, 43vw);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 240, 0), rgba(255, 250, 240, 0.28) 76%, #fff6e8 100%),
+    url("/assets/pro-detail/town-strip.png") center bottom / contain no-repeat;
+  opacity: 0.9;
+  filter: drop-shadow(0 26px 38px rgba(72, 55, 32, 0.14));
+}
+
+.pro-hero::after {
+  position: absolute;
+  right: max(22px, calc((100vw - var(--pro-max)) / 2 + 54px));
+  bottom: 128px;
+  width: min(520px, 38vw);
+  height: 16px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffba34, #eda11a);
+  box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.86), 0 10px 24px rgba(237, 161, 26, 0.2);
+  content: "";
+  opacity: 0.84;
+  transform: rotate(-7deg);
+}
+
+.pro-hero__copy {
+  max-width: 560px;
+  padding-top: 8px;
+}
+
+.pro-hero h1 {
+  max-width: 11em;
+  font-size: clamp(46px, 5.2vw, 72px);
+  line-height: 1.24;
+}
+
+.pro-hero__copy p {
+  color: #5f675d;
+  font-weight: 750;
+  line-height: 1.95;
+}
+
+.pro-hero__note {
+  width: fit-content;
+  border: 1px solid rgba(214, 196, 169, 0.82);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.82);
+  padding: 12px 14px;
+  box-shadow: 0 10px 24px rgba(72, 55, 32, 0.06);
+}
+
+.pro-dashboard-panel {
+  align-self: center;
+  justify-self: end;
+  width: min(100%, 660px);
+  min-height: 0;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.92), rgba(255, 248, 236, 0.86));
+  box-shadow: 0 22px 54px rgba(72, 55, 32, 0.12);
+}
+
+.pro-dashboard-panel__rail {
+  background: rgba(248, 251, 239, 0.72);
+}
+
+.pro-dashboard-panel__heading h2::before {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--pro-amber);
+  box-shadow: 0 0 0 5px rgba(237, 161, 26, 0.14);
+  content: "";
+  vertical-align: 0.08em;
+}
+
+.pro-insight-card,
+.pro-kpi-card,
+.pro-task-card,
+.pro-next-card,
+.pro-capability-card,
+.pro-compare-table,
+.pro-pricing-card,
+.pro-faq-card {
+  border-color: rgba(214, 196, 169, 0.88);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.88);
+}
+
+.pro-insight-card__icon-wrap,
+.pro-capability-card__icon-wrap,
+.pro-next-card__icon {
+  background: #f6f0df;
+  color: var(--pro-green);
+  box-shadow: inset 0 0 0 1px rgba(214, 196, 169, 0.78);
+}
+
+.pro-insight-card[data-tone="amber"] .pro-insight-card__icon-wrap {
+  background: #fff0c8;
+  color: var(--pro-amber);
+  box-shadow: inset 0 0 0 1px rgba(237, 161, 26, 0.22);
+}
+
+.pro-section__heading h2 {
+  color: #202831;
+}
+
+.pro-section__heading h2::after {
+  display: block;
+  width: 52px;
+  height: 4px;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: var(--pro-green);
+  content: "";
+}
+
+.pro-capability-card {
+  min-height: 360px;
+}
+
+.pro-capability-card__image {
+  width: min(100%, 310px);
+  max-height: 210px;
+}
+
+.pro-compare-table__header > span:last-child,
+.pro-compare-table__row > span:last-child {
+  background: linear-gradient(90deg, rgba(231, 240, 220, 0.88), rgba(255, 246, 229, 0.5));
+}
+
+.pro-pricing-card.is-featured {
+  box-shadow: 0 0 0 4px rgba(237, 161, 26, 0.08), 0 18px 44px rgba(72, 55, 32, 0.11);
+}
+
+.pro-pricing-card__label,
+.pro-dashboard-panel__pill,
+.pro-capability-card__badge {
+  border-radius: 999px;
+}
+
+.pro-footer-town {
+  border-top: 1px solid rgba(229, 216, 196, 0.86);
+}
+
+@media (max-width: 1060px) {
+  .pro-hero {
+    width: min(var(--pro-max), calc(100% - (var(--pro-gutter) * 2)));
+    grid-template-columns: 1fr;
+    padding-inline: 0;
+  }
+
+  .pro-hero::before {
+    right: 50%;
+    bottom: 0;
+    width: min(720px, 110vw);
+    height: 360px;
+    transform: translateX(50%);
+  }
+
+  .pro-hero::after {
+    right: 18%;
+    bottom: 108px;
+    width: 58%;
+  }
+
+  .pro-dashboard-panel {
+    justify-self: stretch;
+    margin-top: 170px;
+  }
+}
+
+@media (max-width: 760px) {
+  .pro-hero h1 {
+    font-size: 38px;
+  }
+
+  .pro-hero::before {
+    bottom: 86px;
+    width: min(560px, 118vw);
+    height: 240px;
+    opacity: 0.36;
+  }
+
+  .pro-hero::after {
+    bottom: 156px;
+    opacity: 0.44;
+  }
+
+  .pro-dashboard-panel {
+    grid-template-columns: 1fr;
+    margin-top: 34px;
+  }
+
+  .pro-dashboard-panel__rail {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-right: 0;
+    border-bottom: 1px solid var(--pro-line-soft);
+  }
+
+  .pro-dashboard-panel__rail-item {
+    width: auto;
+  }
+}
