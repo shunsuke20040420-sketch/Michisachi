@@ -30,6 +30,9 @@ const sections = [
     title: 'みちまち | 使い方',
     image: '/mockups/mockup-07-usage.png',
     alt: 'みちまちの使い方セクション',
+    hotspots: [
+      { label: '先行登録する', href: '#pricing', x: 73.0, y: 87.0, width: 17.0, height: 5.8 },
+    ],
   },
   {
     key: 'route',
@@ -39,6 +42,9 @@ const sections = [
     imageHeight: 984,
     fullImage: true,
     alt: '６週間ルートセクション',
+    hotspots: [
+      { label: '先行登録する', href: '#pricing', x: 3.8, y: 36.6, width: 17.6, height: 5.8 },
+    ],
   },
   {
     key: 'growth',
