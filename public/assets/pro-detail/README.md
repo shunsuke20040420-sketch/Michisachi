@@ -3,9 +3,7 @@
 Reference mockup:
 - `public/mockups/pro-detail-reference.png`
 
-Generated Pro detail asset sheet:
-- `public/assets/pro-detail/pro-asset-sheet-source.png` - image-to-image source sheet generated from the Pro detail mockup style.
-- `public/assets/pro-detail/pro-asset-sheet.png` - transparent version after chroma-key removal.
+Generated Pro detail assets:
 - `public/assets/pro-detail/town-cluster.png`
 - `public/assets/pro-detail/route-flags.png`
 - `public/assets/pro-detail/ai-robot.png`
