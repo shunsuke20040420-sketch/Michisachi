@@ -30,7 +30,6 @@ function FeatureValue({ value }) {
     return (
       <span className="pro-feature-value pro-feature-value--yes" aria-label="利用できます">
         <Check className="pro-feature-value__icon" aria-hidden="true" />
-        <span>○</span>
       </span>
     );
   }
