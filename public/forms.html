@@ -6,10 +6,17 @@
     <title>Netlify Forms</title>
   </head>
   <body>
-    <form name="contact" method="POST" data-netlify="true" hidden>
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
       <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
+      <input name="name" />
       <input type="email" name="email" />
-      <input type="text" name="type" />
+      <select name="type">
+        <option value="waitlist">先行登録</option>
+        <option value="pro">Pro先行登録</option>
+        <option value="feedback">フィードバック</option>
+        <option value="test">利用テスト希望</option>
+      </select>
       <textarea name="message"></textarea>
       <input type="text" name="consent" />
       <input type="text" name="createdAt" />

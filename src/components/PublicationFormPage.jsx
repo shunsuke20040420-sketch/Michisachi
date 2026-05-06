@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 
 const STORAGE_KEY = "michimachi:publication-inquiries";
 const FORM_NAME = "contact";
+const HONEYPOT_FIELD = "bot-field";
 const contactEmail = import.meta.env.VITE_MICHIMACHI_CONTACT_EMAIL ?? "";
 
 const inquiryTypes = [
@@ -40,15 +41,12 @@ function getInitialType() {
   return inquiryTypes.some((type) => type.value === requestedType) ? requestedType : "waitlist";
 }
 
-function encodeForm(data) {
-  return new URLSearchParams(data).toString();
-}
-
 function buildMessage(inquiry) {
   const typeLabel = inquiryTypes.find((type) => type.value === inquiry.type)?.label ?? inquiry.type;
 
   return [
     "みちまち 公開前フォーム",
+    `名前: ${inquiry.name || "未入力"}`,
     `種別: ${typeLabel}`,
     `メール: ${inquiry.email}`,
     `内容: ${inquiry.message || "未入力"}`,
@@ -58,6 +56,7 @@ function buildMessage(inquiry) {
 
 export default function PublicationFormPage() {
   const [form, setForm] = useState({
+    name: "",
     email:
       typeof window === "undefined"
         ? ""
@@ -91,6 +90,12 @@ export default function PublicationFormPage() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    const formElement = event.currentTarget;
+    const rawFormData = new FormData(formElement);
+
+    if (String(rawFormData.get(HONEYPOT_FIELD) ?? "").trim()) {
+      return;
+    }
 
     if (!form.email.trim()) {
       setError("メールアドレスを入力してください。");
@@ -104,39 +109,46 @@ export default function PublicationFormPage() {
 
     const inquiry = {
       ...form,
+      name: form.name.trim(),
       email: form.email.trim(),
       message: form.message.trim(),
       createdAt: new Date().toISOString(),
     };
 
-    saveInquiry(inquiry);
     setLastInquiry(inquiry);
 
     if (isLocalPreview()) {
-      setStatus("saved");
+      setStatus("idle");
+      setError("ローカルpreviewではNetlify Formsへ送信されません。公開URLで送信してください。");
       return;
     }
 
     setStatus("submitting");
+    setError("");
+
+    const formData = new FormData(formElement);
+    formData.set("form-name", FORM_NAME);
+    formData.set(HONEYPOT_FIELD, "");
+    formData.set("name", inquiry.name);
+    formData.set("email", inquiry.email);
+    formData.set("type", inquiry.type);
+    formData.set("message", inquiry.message);
+    formData.set("consent", inquiry.consent ? "yes" : "no");
+    formData.set("createdAt", inquiry.createdAt);
 
     try {
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encodeForm({
-          "form-name": FORM_NAME,
-          email: inquiry.email,
-          type: inquiry.type,
-          message: inquiry.message,
-          consent: inquiry.consent ? "yes" : "no",
-          createdAt: inquiry.createdAt,
-        }),
+        body: new URLSearchParams(formData).toString(),
       });
 
       if (!response.ok) throw new Error("Form submission failed");
+      saveInquiry(inquiry);
       setStatus("sent");
     } catch {
-      setStatus("saved");
+      setStatus("idle");
+      setError("送信できませんでした。Netlifyのフォーム検出後に、公開URLからもう一度送信してください。");
     }
   }
 
@@ -173,9 +185,27 @@ export default function PublicationFormPage() {
           data-netlify="true"
           method="POST"
           name={FORM_NAME}
+          netlify-honeypot={HONEYPOT_FIELD}
           onSubmit={handleSubmit}
         >
           <input type="hidden" name="form-name" value={FORM_NAME} />
+          <input type="hidden" name={HONEYPOT_FIELD} tabIndex="-1" autoComplete="off" />
+          <input type="hidden" name="createdAt" value="" />
+
+          <label className="publication-field">
+            <span>
+              <Mail aria-hidden="true" size={18} />
+              お名前
+            </span>
+            <input
+              autoComplete="name"
+              name="name"
+              onChange={(event) => updateField("name", event.target.value)}
+              placeholder="山田 太郎"
+              type="text"
+              value={form.name}
+            />
+          </label>
 
           <label className="publication-field">
             <span>
@@ -244,14 +274,13 @@ export default function PublicationFormPage() {
             {status === "submitting" ? "送信中" : "送信する"}
           </button>
 
-          {status === "sent" || status === "saved" ? (
+          {status === "sent" ? (
             <div className="publication-result" role="status">
               <CheckCircle2 aria-hidden="true" size={22} />
               <div>
-                <strong>{status === "sent" ? "送信しました" : "この端末に控えを保存しました"}</strong>
+                <strong>送信しました</strong>
                 <p>
-                  Netlify Forms 対応環境では送信内容が管理画面に届きます。
-                  それ以外の環境では下の控えを使って共有できます。
+                  Netlify Forms への送信が完了しました。送信内容は管理画面の contact に届きます。
                 </p>
                 <div className="publication-result__actions">
                   <button type="button" onClick={handleCopy}>
