@@ -31,7 +31,7 @@ export const sfTowns = [
   {
     id: 'town-haru-english',
     title: '朝の英語ルート',
-    image: `${assetBase}/city-main-display.png`,
+    image: `${assetBase}/city-main-clean.png`,
     user: sfUsers.haru,
     category: '英語',
     categoryIcon: Globe,
