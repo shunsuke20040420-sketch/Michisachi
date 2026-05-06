@@ -1,7 +1,8 @@
 import { ArrowLeft, CheckCircle2, Mail, MessageSquare, Send, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 
-const FORM_URL = "https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_GOOGLE_FORM_ID/viewform";
+const FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfWeaSebT4nebCBWfPL2sGMZLkYqo2Ru6VqYul9UCB5bFXC8A/viewform?usp=publish-editor";
 
 const inquiryTypes = [
   { value: "waitlist", label: "先行登録" },
