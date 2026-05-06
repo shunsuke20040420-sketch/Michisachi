@@ -171,12 +171,12 @@ function Hero() {
 
         <div className="pro-hero__actions">
           <a className="pro-hero__primary" href="/contact?type=pro">
-            先行登録する
+            先行価格を受け取る
             <ArrowRight className="pro-hero__primary-icon" aria-hidden="true" />
           </a>
           <p className="pro-hero__note">
             <Gift className="pro-hero__note-icon" aria-hidden="true" />
-            リリース前登録なら、ずっと¥6,800 / 年
+            今だけ¥6,800 / 年。通常予定は¥9,800 / 年
           </p>
         </div>
 
@@ -261,6 +261,7 @@ function Pricing() {
     <section className="pro-section pro-section--pricing" id="pro-pricing" aria-labelledby="pro-pricing-title">
       <div className="pro-section__heading">
         <h2 id="pro-pricing-title">料金</h2>
+        <p>まずは先行登録者価格を押さえて、正式リリースまで無料で待てます。</p>
       </div>
 
       <div className="pro-pricing-grid">
@@ -299,7 +300,7 @@ function Pricing() {
 
       <p className="pro-pricing-note">
         <Gift className="pro-pricing-note__icon" aria-hidden="true" />
-        先行登録は無料です。メールアドレスとメッセージは公開準備と連絡にだけ使います。
+        先行登録だけでは課金されません。支払い開始前に、料金と開始日をあらためて案内します。
       </p>
     </section>
   );

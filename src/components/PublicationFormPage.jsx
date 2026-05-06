@@ -46,7 +46,7 @@ function buildMessage(inquiry) {
   const typeLabel = inquiryTypes.find((type) => type.value === inquiry.type)?.label ?? inquiry.type;
 
   return [
-    "みちまち 公開前フォーム",
+    "みちまち 先行価格フォーム",
     `名前: ${inquiry.name || "未入力"}`,
     `種別: ${typeLabel}`,
     `メール: ${inquiry.email}`,
@@ -171,11 +171,11 @@ export default function PublicationFormPage() {
 
       <section className="publication-hero">
         <div className="publication-copy">
-          <p className="publication-kicker">公開前フォーム</p>
-          <h1 id="publication-title">みちまちの先行登録・フィードバック</h1>
+          <p className="publication-kicker">リリース前限定</p>
+          <h1 id="publication-title">先行価格を受け取る</h1>
           <p>
-            先行登録、利用テスト希望、気づいたことをここから送れます。
-            送信内容は公開準備とプロトタイプ改善のために使います。
+            Proの先行登録者価格 ¥6,800 / 年を押さえられます。
+            先行登録だけでは課金されません。
           </p>
         </div>
 
@@ -244,12 +244,12 @@ export default function PublicationFormPage() {
           <label className="publication-field">
             <span>
               <MessageSquare aria-hidden="true" size={18} />
-              メッセージ
+              メッセージ・続けたい目標
             </span>
             <textarea
               name="message"
               onChange={(event) => updateField("message", event.target.value)}
-              placeholder="気になったこと、使ってみたい理由、試したい目標など"
+              placeholder="例: 朝に英語学習を続けたい、資格勉強を6週間続けたい"
               rows="5"
               value={form.message}
             />
@@ -272,7 +272,7 @@ export default function PublicationFormPage() {
 
           <button className="publication-submit" disabled={status === "submitting"} type="submit">
             <Send aria-hidden="true" size={19} />
-            {status === "submitting" ? "送信中" : "送信する"}
+            {status === "submitting" ? "送信中" : "先行価格を受け取る"}
           </button>
 
           {status === "sent" ? (
@@ -310,7 +310,7 @@ export default function PublicationFormPage() {
         <article>
           <CheckCircle2 aria-hidden="true" size={24} />
           <h2>課金は発生しません</h2>
-          <p>先行登録は価格や案内を受け取るための登録で、決済情報は取得しません。</p>
+          <p>先行登録は価格と案内を受け取るための登録で、決済情報は取得しません。</p>
         </article>
       </section>
     </main>

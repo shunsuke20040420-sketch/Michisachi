@@ -136,12 +136,23 @@ export const comparisonRows = [
 
 export const pricingPlans = [
   {
+    title: "先行登録者価格",
+    price: "6,800",
+    unit: "/年",
+    label: "リリース前限定",
+    featured: true,
+    image: proAssets.townStrip,
+    imageAlt: "先行登録者価格の街アイテム",
+    features: ["通常予定より3,000円お得", "登録している限り、この価格が続きます。"],
+    cta: "先行価格を受け取る",
+  },
+  {
     title: "月額プラン",
     price: "980",
     unit: "/月",
     image: proAssets.shop,
     imageAlt: "月額プランの街アイテム",
-    features: ["いつでも解約できます", "必要なときだけ使えます。"],
+    features: ["正式リリース後の通常月額", "必要なときだけ使えます。"],
   },
   {
     title: "年額プラン",
@@ -151,17 +162,6 @@ export const pricingPlans = [
     image: proAssets.goalHouse,
     imageAlt: "年額プランの街アイテム",
     features: ["一括でお得なプランです", "いつでも解約できます"],
-  },
-  {
-    title: "先行登録者価格",
-    price: "6,800",
-    unit: "/年",
-    label: "リリース前限定",
-    featured: true,
-    image: proAssets.townStrip,
-    imageAlt: "先行登録者価格の街アイテム",
-    features: ["アプリリリースまでの限定価格", "登録している限り、この価格が続きます。"],
-    cta: "先行登録者価格を受け取る",
   },
 ];
 
