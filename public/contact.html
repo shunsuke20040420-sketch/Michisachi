@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <title>Contact Form</title>
+  </head>
+  <body>
+    <form name="contact" action="/" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact" />
+      <p hidden>
+        <label>Bot field <input name="bot-field" /></label>
+      </p>
+      <p>
+        <label>Name <input name="name" /></label>
+      </p>
+      <p>
+        <label>Email <input name="email" type="email" /></label>
+      </p>
+      <p>
+        <label>
+          Type
+          <select name="type">
+            <option value="waitlist">waitlist</option>
+            <option value="pro">pro</option>
+            <option value="feedback">feedback</option>
+            <option value="test">test</option>
+          </select>
+        </label>
+      </p>
+      <p>
+        <label>Message <textarea name="message"></textarea></label>
+      </p>
+      <p>
+        <label>Consent <input name="consent" /></label>
+      </p>
+      <p>
+        <label>Created at <input name="createdAt" /></label>
+      </p>
+      <p>
+        <button type="submit">Submit</button>
+      </p>
+    </form>
+  </body>
+</html>
