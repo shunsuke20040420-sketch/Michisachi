@@ -113,7 +113,7 @@ export default function SfSharedAdapt() {
 
         <SfPanel title="あなたの街に入る道" className="sf-card-in">
           <div className="sf-own-town-preview">
-            <img src="/assets/michimachi/city-main.png" alt="あなたの街に追加される道" />
+            <img src="/assets/michimachi/hero-town.png" alt="あなたの街に追加される道" />
             <span className="sf-route-glow" aria-hidden="true" />
           </div>
           <div className="sf-import-summary">

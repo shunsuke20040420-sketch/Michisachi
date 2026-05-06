@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 
 const assetBase = '/assets/michimachi';
+const lpTownImage = `${assetBase}/hero-town.png`;
 const sharedAssetBase = '/assets/shared-flow';
 
 export const sfUsers = {
@@ -31,12 +32,12 @@ export const sfTowns = [
   {
     id: 'town-haru-english',
     title: '朝の英語ルート',
-    image: `${assetBase}/city-main-clean.png`,
+    image: lpTownImage,
     user: sfUsers.haru,
     category: '英語',
     categoryIcon: Globe,
     tags: ['チェーン', '最低条件', '環境整備'],
-    chain: '起きる → 水を飲む → 英語を聞く → 1問だけ',
+    chain: '起きる → 水を飲む → 英語を開く → 1問だけ',
     minAction: '英語アプリを開いて聞くだけ',
     stats: { reach: 128, days: 42, avgTime: 37 },
     stuckPoints: [
@@ -61,7 +62,7 @@ export const sfTowns = [
   {
     id: 'town-mika-gym',
     title: '早朝ジムルート',
-    image: `${assetBase}/city-station.png`,
+    image: lpTownImage,
     user: sfUsers.mika,
     category: '運動',
     categoryIcon: Dumbbell,
@@ -91,7 +92,7 @@ export const sfTowns = [
   {
     id: 'town-sota-license',
     title: '資格勉強ルート',
-    image: `${assetBase}/city-hill-clean.png`,
+    image: lpTownImage,
     user: sfUsers.sota,
     category: '資格',
     categoryIcon: Trophy,
@@ -121,7 +122,7 @@ export const sfTowns = [
   {
     id: 'town-nana-tidy',
     title: '片付け5分ルート',
-    image: `${assetBase}/workshop.png`,
+    image: lpTownImage,
     user: sfUsers.nana,
     category: '片付け',
     categoryIcon: Star,
@@ -150,7 +151,7 @@ export const sfTowns = [
   {
     id: 'town-ren-reading',
     title: '読書10分ルート',
-    image: `${assetBase}/city-harbor.png`,
+    image: lpTownImage,
     user: sfUsers.ren,
     category: '読書',
     categoryIcon: BookOpen,
@@ -179,7 +180,7 @@ export const sfTowns = [
   {
     id: 'town-yui-coffee',
     title: '朝コーヒー習慣',
-    image: `${assetBase}/city-harbor-display.png`,
+    image: lpTownImage,
     user: sfUsers.yui,
     category: 'その他',
     categoryIcon: Coffee,
@@ -241,8 +242,8 @@ export const sfAdaptSteps = [
 ];
 
 export const sfImportedData = {
-  beforeTown: { image: `${assetBase}/city-main-display.png`, label: 'haru さんの街' },
-  afterTown:  { image: `${assetBase}/city-main.png`, label: 'あなたの街' },
+  beforeTown: { image: lpTownImage, label: 'haru さんの街' },
+  afterTown:  { image: lpTownImage, label: 'あなたの街' },
   addedFeatures: ['チェーンの橋', '最低条件の灯台', '環境整備の倉庫'],
   todayStep: {
     label: '英語アプリを開いて、1問だけ解く',

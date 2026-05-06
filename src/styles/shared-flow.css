@@ -1274,6 +1274,60 @@
   height: 15px;
 }
 
+.sf-detail-illustration {
+  position: relative;
+}
+
+.sf-detail-illustration__town-labels {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.sf-detail-illustration__town-labels span {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
+  border: 1px solid rgba(214, 196, 169, 0.9);
+  border-radius: 6px;
+  background: rgba(255, 252, 245, 0.94);
+  color: var(--sf-ink);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: 0 6px 14px rgba(72, 55, 32, 0.08);
+}
+
+.sf-detail-illustration__route {
+  pointer-events: none;
+}
+
+.sf-detail-illustration__route.is-wake {
+  left: 7%;
+  top: 34%;
+}
+
+.sf-detail-illustration__route.is-water {
+  left: 54%;
+  top: 14%;
+}
+
+.sf-detail-illustration__route.is-book {
+  left: 26%;
+  bottom: 14%;
+}
+
+.sf-detail-illustration__route.is-pencil {
+  right: 8%;
+  bottom: 11%;
+}
+
 .sf-adapt-hero,
 .sf-category-hero,
 .sf-profile-hero {
@@ -1939,6 +1993,21 @@
     left: 18%;
     bottom: 8%;
   }
+  .sf-detail-illustration__town-labels {
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    gap: 6px;
+  }
+  .sf-detail-illustration__town-labels span {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+  .sf-detail-illustration__route {
+    min-height: 34px;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
   .sf-library-panel__head {
     display: grid;
   }
@@ -2024,6 +2093,30 @@
   .sf-library-hero-pill.is-pencil {
     right: 2%;
     bottom: 4%;
+  }
+  .sf-detail-illustration__town-labels {
+    top: 8px;
+    gap: 5px;
+  }
+  .sf-detail-illustration__town-labels span {
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+  .sf-detail-illustration__route.is-wake {
+    left: 5%;
+    top: 31%;
+  }
+  .sf-detail-illustration__route.is-water {
+    left: 50%;
+    top: 10%;
+  }
+  .sf-detail-illustration__route.is-book {
+    left: 16%;
+    bottom: 9%;
+  }
+  .sf-detail-illustration__route.is-pencil {
+    right: 3%;
+    bottom: 6%;
   }
   .sf-library-panel--cards,
   .sf-library-panel--insight {
