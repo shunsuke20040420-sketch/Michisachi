@@ -2,9 +2,9 @@ import { ArrowLeft, CheckCircle2, Copy, Mail, MessageSquare, Send, ShieldCheck }
 import { useMemo, useState } from "react";
 
 const STORAGE_KEY = "michimachi:publication-inquiries";
-const FORM_NAME = "contact";
+const FORM_NAME = "waitlist";
 const HONEYPOT_FIELD = "bot-field";
-const NETLIFY_FORM_ENDPOINT = "/netlify-forms.html";
+const NETLIFY_FORM_ENDPOINT = "/";
 const contactEmail = import.meta.env.VITE_MICHIMACHI_CONTACT_EMAIL ?? "";
 
 const inquiryTypes = [
@@ -43,7 +43,8 @@ function getInitialType() {
 }
 
 function buildMessage(inquiry) {
-  const typeLabel = inquiryTypes.find((type) => type.value === inquiry.type)?.label ?? inquiry.type;
+  const typeLabel =
+    inquiryTypes.find((type) => type.value === inquiry.category)?.label ?? inquiry.category;
 
   return [
     "みちまち 先行価格フォーム",
@@ -62,7 +63,7 @@ export default function PublicationFormPage() {
       typeof window === "undefined"
         ? ""
         : new URLSearchParams(window.location.search).get("email") ?? "",
-    type: getInitialType(),
+    category: getInitialType(),
     message: "",
     consent: false,
   });
@@ -131,8 +132,9 @@ export default function PublicationFormPage() {
       "form-name": FORM_NAME,
       name: inquiry.name,
       email: inquiry.email,
-      type: inquiry.type,
+      category: inquiry.category,
       message: inquiry.message,
+      consent: inquiry.consent ? "同意" : "",
     }).toString();
 
     try {
@@ -229,9 +231,9 @@ export default function PublicationFormPage() {
               種別
             </span>
             <select
-              name="type"
-              onChange={(event) => updateField("type", event.target.value)}
-              value={form.type}
+              name="category"
+              onChange={(event) => updateField("category", event.target.value)}
+              value={form.category}
             >
               {inquiryTypes.map((type) => (
                 <option key={type.value} value={type.value}>
@@ -261,6 +263,7 @@ export default function PublicationFormPage() {
               name="consent"
               onChange={(event) => updateField("consent", event.target.checked)}
               type="checkbox"
+              value="同意"
             />
             <span>
               入力内容を公開準備・プロトタイプ改善・連絡のために利用することに同意します。
@@ -279,10 +282,7 @@ export default function PublicationFormPage() {
             <div className="publication-result" role="status">
               <CheckCircle2 aria-hidden="true" size={22} />
               <div>
-                <strong>送信しました</strong>
-                <p>
-                  Netlify Forms への送信が完了しました。送信内容は管理画面の contact に届きます。
-                </p>
+                <strong>送信ありがとうございました。先行案内をお送りします。</strong>
                 <div className="publication-result__actions">
                   <button type="button" onClick={handleCopy}>
                     <Copy aria-hidden="true" size={17} />
