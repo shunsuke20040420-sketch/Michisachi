@@ -6,29 +6,16 @@
     <title>Netlify Forms</title>
   </head>
   <body>
-    <form
-      name="waitlist"
-      action="/"
-      method="POST"
-      data-netlify="true"
-      netlify
-      netlify-honeypot="bot-field"
-      aria-hidden="true"
-      style="display: none"
-    >
+    <form name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
       <input type="hidden" name="form-name" value="waitlist" />
-      <input name="bot-field" />
-      <input name="name" />
-      <input type="email" name="email" />
+      <input name="email" type="email" />
       <select name="category">
-        <option value="waitlist">先行登録</option>
-        <option value="pro">Pro先行登録</option>
-        <option value="feedback">フィードバック</option>
-        <option value="test">利用テスト希望</option>
+        <option value="先行登録">先行登録</option>
+        <option value="フィードバック">フィードバック</option>
       </select>
       <textarea name="message"></textarea>
-      <input type="text" name="consent" />
-      <input type="text" name="createdAt" />
+      <input name="consent" type="checkbox" />
+      <input name="bot-field" />
     </form>
   </body>
 </html>

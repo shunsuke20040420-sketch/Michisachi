@@ -5,17 +5,16 @@
     <title>Netlify Forms</title>
   </head>
   <body>
-    <form name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <form name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
       <input type="hidden" name="form-name" value="waitlist" />
-      <input name="bot-field" />
-      <input name="name" />
       <input name="email" type="email" />
       <select name="category">
         <option value="先行登録">先行登録</option>
-        <option value="問い合わせ">問い合わせ</option>
+        <option value="フィードバック">フィードバック</option>
       </select>
       <textarea name="message"></textarea>
-      <input name="consent" />
+      <input name="consent" type="checkbox" />
+      <input name="bot-field" />
     </form>
   </body>
 </html>

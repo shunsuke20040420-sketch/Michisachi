@@ -42,6 +42,10 @@ function getInitialType() {
   return inquiryTypes.some((type) => type.value === requestedType) ? requestedType : "waitlist";
 }
 
+function encode(data) {
+  return new URLSearchParams(data).toString();
+}
+
 function buildMessage(inquiry) {
   const typeLabel =
     inquiryTypes.find((type) => type.value === inquiry.category)?.label ?? inquiry.category;
@@ -128,14 +132,14 @@ export default function PublicationFormPage() {
     setStatus("submitting");
     setError("");
 
-    const body = new URLSearchParams({
+    const body = encode({
       "form-name": FORM_NAME,
       name: inquiry.name,
       email: inquiry.email,
       category: inquiry.category,
       message: inquiry.message,
-      consent: inquiry.consent ? "同意" : "",
-    }).toString();
+      consent: inquiry.consent ? "yes" : "no",
+    });
 
     try {
       const response = await fetch(NETLIFY_FORM_ENDPOINT, {
@@ -192,7 +196,11 @@ export default function PublicationFormPage() {
           onSubmit={handleSubmit}
         >
           <input type="hidden" name="form-name" value={FORM_NAME} />
-          <input type="hidden" name={HONEYPOT_FIELD} tabIndex="-1" autoComplete="off" />
+          <p hidden>
+            <label>
+              Don&apos;t fill this out: <input name={HONEYPOT_FIELD} />
+            </label>
+          </p>
           <input type="hidden" name="createdAt" value="" />
 
           <label className="publication-field">
