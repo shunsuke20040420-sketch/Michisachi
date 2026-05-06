@@ -31,7 +31,7 @@ export const sfTowns = [
   {
     id: 'town-haru-english',
     title: '朝の英語ルート',
-    image: `${assetBase}/city-main.png`,
+    image: `${assetBase}/city-main-display.png`,
     user: sfUsers.haru,
     category: '英語',
     categoryIcon: Globe,
@@ -61,7 +61,7 @@ export const sfTowns = [
   {
     id: 'town-mika-gym',
     title: '早朝ジムルート',
-    image: `${assetBase}/city-harbor.png`,
+    image: `${assetBase}/city-station.png`,
     user: sfUsers.mika,
     category: '運動',
     categoryIcon: Dumbbell,
@@ -91,7 +91,7 @@ export const sfTowns = [
   {
     id: 'town-sota-license',
     title: '資格勉強ルート',
-    image: `${assetBase}/city-hill.png`,
+    image: `${assetBase}/city-hill-clean.png`,
     user: sfUsers.sota,
     category: '資格',
     categoryIcon: Trophy,
@@ -121,7 +121,7 @@ export const sfTowns = [
   {
     id: 'town-nana-tidy',
     title: '片付け5分ルート',
-    image: `${assetBase}/city-hill-clean.png`,
+    image: `${assetBase}/workshop.png`,
     user: sfUsers.nana,
     category: '片付け',
     categoryIcon: Star,
@@ -150,7 +150,7 @@ export const sfTowns = [
   {
     id: 'town-ren-reading',
     title: '読書10分ルート',
-    image: `${assetBase}/city-harbor-display.png`,
+    image: `${assetBase}/city-harbor.png`,
     user: sfUsers.ren,
     category: '読書',
     categoryIcon: BookOpen,
@@ -179,7 +179,7 @@ export const sfTowns = [
   {
     id: 'town-yui-coffee',
     title: '朝コーヒー習慣',
-    image: `${assetBase}/city-main-display.png`,
+    image: `${assetBase}/city-harbor-display.png`,
     user: sfUsers.yui,
     category: 'その他',
     categoryIcon: Coffee,
@@ -241,8 +241,8 @@ export const sfAdaptSteps = [
 ];
 
 export const sfImportedData = {
-  beforeTown: { image: `${assetBase}/city-harbor-display.png`, label: 'haru さんの街' },
-  afterTown:  { image: `${assetBase}/city-main-display.png`,  label: 'あなたの街' },
+  beforeTown: { image: `${assetBase}/city-main-display.png`, label: 'haru さんの街' },
+  afterTown:  { image: `${assetBase}/city-main.png`, label: 'あなたの街' },
   addedFeatures: ['チェーンの橋', '最低条件の灯台', '環境整備の倉庫'],
   todayStep: {
     label: '英語アプリを開いて、1問だけ解く',
