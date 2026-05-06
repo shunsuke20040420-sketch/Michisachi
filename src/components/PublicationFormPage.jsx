@@ -2,7 +2,7 @@ import { ArrowLeft, CheckCircle2, Copy, Mail, MessageSquare, Send, ShieldCheck }
 import { useMemo, useState } from "react";
 
 const STORAGE_KEY = "michimachi:publication-inquiries";
-const FORM_NAME = "michimachi-interest";
+const FORM_NAME = "contact";
 const contactEmail = import.meta.env.VITE_MICHIMACHI_CONTACT_EMAIL ?? "";
 
 const inquiryTypes = [
@@ -168,7 +168,13 @@ export default function PublicationFormPage() {
           </p>
         </div>
 
-        <form className="publication-form" name={FORM_NAME} onSubmit={handleSubmit}>
+        <form
+          className="publication-form"
+          data-netlify="true"
+          method="POST"
+          name={FORM_NAME}
+          onSubmit={handleSubmit}
+        >
           <input type="hidden" name="form-name" value={FORM_NAME} />
 
           <label className="publication-field">
