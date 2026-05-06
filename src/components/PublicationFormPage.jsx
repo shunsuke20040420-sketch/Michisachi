@@ -182,9 +182,11 @@ export default function PublicationFormPage() {
 
         <form
           className="publication-form"
+          action="/"
           data-netlify="true"
           method="POST"
           name={FORM_NAME}
+          netlify=""
           netlify-honeypot={HONEYPOT_FIELD}
           onSubmit={handleSubmit}
         >

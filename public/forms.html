@@ -6,7 +6,16 @@
     <title>Netlify Forms</title>
   </head>
   <body>
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <form
+      name="contact"
+      action="/"
+      method="POST"
+      data-netlify="true"
+      netlify
+      netlify-honeypot="bot-field"
+      aria-hidden="true"
+      style="display: none"
+    >
       <input type="hidden" name="form-name" value="contact" />
       <input name="bot-field" />
       <input name="name" />
