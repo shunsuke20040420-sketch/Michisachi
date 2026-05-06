@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 const STORAGE_KEY = "michimachi:publication-inquiries";
 const FORM_NAME = "contact";
 const HONEYPOT_FIELD = "bot-field";
+const NETLIFY_FORM_ENDPOINT = "/netlify-forms.html";
 const contactEmail = import.meta.env.VITE_MICHIMACHI_CONTACT_EMAIL ?? "";
 
 const inquiryTypes = [
@@ -126,21 +127,19 @@ export default function PublicationFormPage() {
     setStatus("submitting");
     setError("");
 
-    const formData = new FormData(formElement);
-    formData.set("form-name", FORM_NAME);
-    formData.set(HONEYPOT_FIELD, "");
-    formData.set("name", inquiry.name);
-    formData.set("email", inquiry.email);
-    formData.set("type", inquiry.type);
-    formData.set("message", inquiry.message);
-    formData.set("consent", inquiry.consent ? "yes" : "no");
-    formData.set("createdAt", inquiry.createdAt);
+    const body = new URLSearchParams({
+      "form-name": FORM_NAME,
+      name: inquiry.name,
+      email: inquiry.email,
+      type: inquiry.type,
+      message: inquiry.message,
+    }).toString();
 
     try {
-      const response = await fetch("/", {
+      const response = await fetch(NETLIFY_FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
+        body,
       });
 
       if (!response.ok) throw new Error("Form submission failed");
@@ -182,7 +181,7 @@ export default function PublicationFormPage() {
 
         <form
           className="publication-form"
-          action="/"
+          action={NETLIFY_FORM_ENDPOINT}
           data-netlify="true"
           method="POST"
           name={FORM_NAME}
