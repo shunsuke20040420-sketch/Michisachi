@@ -176,7 +176,7 @@ function Hero() {
           </a>
           <p className="pro-hero__note">
             <Gift className="pro-hero__note-icon" aria-hidden="true" />
-            今だけ¥6,800 / 年。通常予定は¥9,800 / 年
+            初回100名は¥6,800 / 年で案内。通常予定は¥9,800 / 年
           </p>
         </div>
 
@@ -300,7 +300,7 @@ function Pricing() {
 
       <p className="pro-pricing-note">
         <Gift className="pro-pricing-note__icon" aria-hidden="true" />
-        先行登録だけでは課金されません。支払い開始前に、料金と開始日をあらためて案内します。
+        初回100名は先行価格で案内します。先行登録だけでは課金されません。
       </p>
     </section>
   );

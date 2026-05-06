@@ -55,6 +55,7 @@ export default function PublicationFormPage() {
             Proの先行登録者価格 ¥6,800 / 年を押さえられます。
             先行登録だけでは課金されません。
           </p>
+          <p>初回100名は先行価格で案内します。</p>
         </div>
 
         <form className="publication-form" onSubmit={handleSubmit}>
@@ -141,6 +142,7 @@ export default function PublicationFormPage() {
 
           <p className="publication-google-note">
             送信はGoogleフォームで受け付けています。メールアドレスと続けたい目標を入力してください。
+            初回100名は先行価格で案内します。
           </p>
         </form>
       </section>
