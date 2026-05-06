@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>みちまち</title>
+  </head>
+  <body>
+    <script>
+      fetch("/index.html", { cache: "no-store" })
+        .then(function (response) {
+          if (!response.ok) throw new Error("index.html could not be loaded");
+          return response.text();
+        })
+        .then(function (html) {
+          document.open();
+          document.write(html);
+          document.close();
+        })
+        .catch(function () {
+          window.location.replace("/");
+        });
+    </script>
+    <noscript>
+      <p>ページを表示するにはJavaScriptを有効にしてください。</p>
+      <p><a href="/">みちまちへ戻る</a></p>
+    </noscript>
+  </body>
+</html>

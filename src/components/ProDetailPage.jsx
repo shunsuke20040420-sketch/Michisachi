@@ -63,8 +63,8 @@ function Header() {
         ))}
       </nav>
 
-      <a className="pro-header__login" href="#pro-pricing">
-        ログイン
+      <a className="pro-header__login" href="/contact?type=pro">
+        先行登録
       </a>
     </header>
   );
@@ -170,7 +170,7 @@ function Hero() {
         <p>複数の目標、無制限ルート、詳細な週次AIレビューで、次の6週間を迷わず決められます。</p>
 
         <div className="pro-hero__actions">
-          <a className="pro-hero__primary" href="#pro-pricing">
+          <a className="pro-hero__primary" href="/contact?type=pro">
             先行登録する
             <ArrowRight className="pro-hero__primary-icon" aria-hidden="true" />
           </a>
@@ -288,7 +288,7 @@ function Pricing() {
             </ul>
 
             {plan.cta ? (
-              <a className="pro-pricing-card__cta" href="#pro-faq">
+              <a className="pro-pricing-card__cta" href="/contact?type=pro">
                 {plan.cta}
                 <ChevronRight className="pro-pricing-card__cta-icon" aria-hidden="true" />
               </a>
@@ -299,7 +299,7 @@ function Pricing() {
 
       <p className="pro-pricing-note">
         <Gift className="pro-pricing-note__icon" aria-hidden="true" />
-        先行登録は無料です。登録した情報は課金に使われません。
+        先行登録は無料です。メールアドレスとメッセージは公開準備と連絡にだけ使います。
       </p>
     </section>
   );

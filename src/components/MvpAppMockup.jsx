@@ -266,7 +266,7 @@ export default function MvpAppMockup() {
   return (
     <main className="mvp-page-shell" aria-label="みちまちMVP">
       <div className="mvp-page-actions">
-        <a className="mvp-waitlist-link" href="/#pricing">
+        <a className="mvp-waitlist-link" href="/contact?type=waitlist">
           先行登録する
           <ArrowRight className="mvp-waitlist-link__icon" aria-hidden="true" />
         </a>
