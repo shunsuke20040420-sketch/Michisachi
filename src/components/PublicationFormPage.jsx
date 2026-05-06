@@ -42,10 +42,6 @@ function getInitialType() {
   return inquiryTypes.some((type) => type.value === requestedType) ? requestedType : "waitlist";
 }
 
-function encode(data) {
-  return new URLSearchParams(data).toString();
-}
-
 function buildMessage(inquiry) {
   const typeLabel =
     inquiryTypes.find((type) => type.value === inquiry.category)?.label ?? inquiry.category;
@@ -132,26 +128,31 @@ export default function PublicationFormPage() {
     setStatus("submitting");
     setError("");
 
-    const body = encode({
-      "form-name": FORM_NAME,
-      name: inquiry.name,
-      email: inquiry.email,
-      category: inquiry.category,
-      message: inquiry.message,
-      consent: inquiry.consent ? "yes" : "no",
-    });
-
     try {
       const response = await fetch(NETLIFY_FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body,
+        body: new URLSearchParams({
+          "form-name": FORM_NAME,
+          email: inquiry.email,
+          category: inquiry.category,
+          message: inquiry.message,
+          consent: inquiry.consent ? "yes" : "no",
+        }).toString(),
       });
 
-      if (!response.ok) throw new Error("Form submission failed");
+      if (!response.ok) {
+        const responseText = await response.text();
+        console.error("Netlify Forms submission failed", {
+          status: response.status,
+          body: responseText,
+        });
+        throw new Error("Form submission failed");
+      }
       saveInquiry(inquiry);
       setStatus("sent");
-    } catch {
+    } catch (submissionError) {
+      console.error("Netlify Forms submission error", submissionError);
       setStatus("idle");
       setError("送信できませんでした。Netlifyのフォーム検出後に、公開URLからもう一度送信してください。");
     }
